@@ -1,0 +1,17 @@
+<label>Product name:
+  <input #productName />
+</label>
+<label>Product description:
+  <input #productDescription />
+</label>
+<label>Product image:
+  <input #productImage />
+</label>
+<label>Product price:
+  <input #productPrice />
+</label>
+<!-- (click) passes input value to add() and then clears the input -->
+<button (click)="add(productName.value, productDescription.value,
+productImage.value, productPrice.value); productName.value=''">
+  add
+</button>
