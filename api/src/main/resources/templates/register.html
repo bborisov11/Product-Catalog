@@ -1,0 +1,29 @@
+<main>
+    <form th:action = "@{/register}" method="post">
+        <fieldset>
+            <legend>Registration</legend>
+            <p>
+                <label>First Name</label>
+                <input name="firstName" type="text" placeholder="Pesho"/>
+            </p>
+            <p>
+                <label>Last Name</label>
+                <input name="lastName" type="text" placeholder="Goshov"/>
+            </p>
+            <p>
+                <label>Phone Number</label>
+                <input name="phoneNumber" type="text" placeholder="08912345"/>
+            </p>
+            <p>
+                <label>Email</label>
+                <input name="email" type="text" placeholder="asd@gmail.com"/>
+            </p>
+            <p>
+                <label>Password</label>
+                <input name="password" type="text" placeholder="*******"/>
+            </p>
+
+        </fieldset>
+        <input type="submit" value="Submit"/>
+    </form>
+</main>
