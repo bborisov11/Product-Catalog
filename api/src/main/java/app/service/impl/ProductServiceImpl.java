@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
 
         return this.productRepository.findAll()
                 .stream()
-                .map(x -> new ProductDto(x.getId(),x.getName(), x.getDescription(),
+                .map(x -> new ProductDto(x.getId(), x.getName(), x.getDescription(),
                         x.getImage(), x.getPrice()))
                 .collect(Collectors.toList());
     }

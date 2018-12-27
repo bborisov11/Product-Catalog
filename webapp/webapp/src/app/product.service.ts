@@ -29,7 +29,7 @@ export class ProductService {
     return this.http.get<Product>(url);
   }
 
-  updateHero (product: Product): Observable<any> {
+  updateProduct(product: Product): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };

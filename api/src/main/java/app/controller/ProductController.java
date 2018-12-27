@@ -17,19 +17,14 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @GetMapping("/")
-    public String index() {
-        return "Greetings from Spring Boot!";
-    }
+   // @GetMapping("/")
+   // public String index() {
+   //     return "Greetings from Spring Boot!";
+   // }
 
    @PostMapping("/create")
-   public String createProduct(@RequestBody ProductDto productDto) {
-    try {
+   public void createProduct(@RequestBody ProductDto productDto) {
         this.productService.create(productDto);
-        return "Successfully created product!";
-    } catch (Exception ex) {
-        return "Error. Invalid data";
-    }
    }
 
     @GetMapping("/read")
@@ -43,23 +38,12 @@ public class ProductController {
     }
 
     @PutMapping("/update/{id}")
-    public String updateProduct(@RequestBody ProductDto productDto, @PathVariable Long id) {
-        try {
+    public void updateProduct(@RequestBody ProductDto productDto, @PathVariable Long id) {
             this.productService.updateProduct(productDto, id);
-            return "Successfully updated product!";
-        } catch (Exception ex) {
-            return "Error. Invalid data";
-        }
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable Long id) {
-        try {
+    public void deleteProduct(@PathVariable Long id) {
             this.productService.deleteProduct(id);
-            return "Successfully deleted product!";
-        } catch (Exception ex) {
-            return "Error. Invalid data";
-        }
     }
-    
 }

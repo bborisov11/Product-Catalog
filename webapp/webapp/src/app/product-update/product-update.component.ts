@@ -24,7 +24,7 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   save(): void {
-    this.productService.updateHero(this.product)
+    this.productService.updateProduct(this.product)
       .subscribe(() => this.goBack());
   }
 
