@@ -1,0 +1,12 @@
+<ul>
+  <li *ngFor="let product of products" class="picList">
+    <h4>{{product.name}}</h4>
+    <a routerLink="/details/{{product.id}}">
+      <img src="{{product.image}}"></a>
+    <p>Price: {{product.price}}</p>
+      <div id="data-buttons">
+        <button class="btn btn-info" routerLink="/update/{{product.id}}">Edit</button>
+        <button class="btn btn-danger" (click)="remove(product)">Delete</button>
+      </div>
+  </li>
+</ul>
