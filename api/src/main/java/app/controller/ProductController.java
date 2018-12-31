@@ -17,11 +17,6 @@ public class ProductController {
         this.productService = productService;
     }
 
-   // @GetMapping("/")
-   // public String index() {
-   //     return "Greetings from Spring Boot!";
-   // }
-
    @PostMapping("/create")
    public void createProduct(@RequestBody ProductDto productDto) {
         this.productService.create(productDto);
@@ -37,9 +32,9 @@ public class ProductController {
         return productService.getProductWithGivenId(id);
     }
 
-    @PutMapping("/update/{id}")
-    public void updateProduct(@RequestBody ProductDto productDto, @PathVariable Long id) {
-            this.productService.updateProduct(productDto, id);
+    @PutMapping("/update")
+    public void updateProduct(@RequestBody ProductDto productDto) {
+            this.productService.updateProduct(productDto);
     }
 
     @DeleteMapping("/delete/{id}")

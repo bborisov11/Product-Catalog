@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from '../../Product';
 import {ProductService} from '../../product.service';
 import {ActivatedRoute} from '@angular/router';
-import { Location } from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-product-update',
@@ -12,10 +12,18 @@ import { Location } from '@angular/common';
 export class ProductUpdateComponent implements OnInit {
 
    product: Product;
+   invalidName: boolean;
+   invalidDescription: boolean;
+   invalidPrice: boolean;
 
   constructor(private route: ActivatedRoute,
               private productService: ProductService,
-              private location: Location) { }
+              private router: Router) {
+    this.product = new Product();
+    this.invalidName = false;
+    this.invalidDescription = false;
+    this.invalidPrice = false;
+  }
 
   getProduct(): void {
     const id = +this.route.snapshot.paramMap.get('id');
@@ -24,12 +32,15 @@ export class ProductUpdateComponent implements OnInit {
   }
 
   save(): void {
-    this.productService.updateProduct(this.product)
-      .subscribe(() => this.goBack());
-  }
+    this.invalidName = this.product.name.trim().length === 0;
+    this.invalidDescription = this.product.description.trim().length === 0;
+    this.invalidPrice = typeof this.product.price !== 'number' ||
+      this.product.price === null;
 
-  goBack(): void {
-    this.location.back();
+    if (!(this.invalidName || this.invalidDescription || this.invalidPrice)) {
+      this.productService.updateProduct(this.product)
+        .subscribe(() => this.router.navigate(['./']));
+    }
   }
 
   ngOnInit() {

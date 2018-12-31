@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Catalog</a>
+  <a class="navbar-brand" routerLink="/">Catalog</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
           aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -7,13 +7,13 @@
   <div class="collapse navbar-collapse" id="navbarCollapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/create">Create Product</a>
+        <a class="nav-link" routerLink="/create">Create Product</a>
       </li>
     </ul>
     <ul class="navbar-nav pull-right">
-      <li class="nav-item"><a id="login" href="/login" class="nav-link">Login</a></li>
-      <li class="nav-item"><a id="register" href="/register" class="nav-link">Register</a></li>
-      <li class="nav-item"><a id="logout" href="/logout" class="nav-link d-none">Logout</a></li>
+      <li class="nav-item"><a routerLink="/login" class="nav-link">Login</a></li>
+      <li class="nav-item"><a routerLink="/register" class="nav-link">Register</a></li>
+      <li class="nav-item"><a routerLink="/logout" class="nav-link d-none">Logout</a></li>
     </ul>
   </div>
 </nav>

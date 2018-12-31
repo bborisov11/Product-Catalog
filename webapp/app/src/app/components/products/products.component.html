@@ -1,5 +1,6 @@
+<input id="search" #filter (input)="filterProducts(filter.value)" placeholder="Search..">
 <ul>
-  <li *ngFor="let product of products" class="picList">
+  <li *ngFor="let product of filteredProducts" class="picList">
     <h4>{{product.name}}</h4>
     <a routerLink="/details/{{product.id}}">
       <img src="{{product.image}}"></a>

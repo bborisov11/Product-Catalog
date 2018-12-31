@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Product} from '../../Product';
 import {ProductService} from '../../product.service';
 import {Observable} from 'rxjs/index';
@@ -11,21 +11,34 @@ import {Observable} from 'rxjs/index';
 export class ProductsComponent implements OnInit {
 
   products: Product[];
+  filteredProducts: Product[];
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService) {
+  }
+
+  filterProducts(value: string): void {
+    this.filteredProducts = this.products.slice(0);
+    this.filteredProducts = this.filteredProducts
+      .filter(x => x.name.toLowerCase().startsWith(value.toLowerCase()));
+  }
 
   getProducts(): void {
     this.productService.getProducts()
-      .subscribe(products => this.products = products);
+      .subscribe(products => {
+        this.products = products;
+        this.filteredProducts = this.products.slice(0);
+      });
   }
 
   remove(product: Product): void {
-    this.products = this.products.filter(p => p !== product);
-    this.productService.deleteProduct(product).subscribe();
+
+    this.productService.deleteProduct(product)
+      .subscribe(() => {
+        this.filteredProducts = this.filteredProducts.filter(p => p !== product);
+      });
   }
 
   ngOnInit() {
     this.getProducts();
   }
-
 }

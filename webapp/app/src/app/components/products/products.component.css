@@ -7,6 +7,7 @@ div {
 .picList {
   list-style: none;
   text-align: center;
+  margin-top: 35px;
 }
 ul li {
   text-align: left;
@@ -31,5 +32,9 @@ img {
   height: 170px;
   border-radius: 5px;
   margin-right: 15px;
+}
+#search {
+  margin-top: 15px;
+  margin-left: 40px;
 }
 

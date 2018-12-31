@@ -17,7 +17,6 @@ export class ProductService {
   }
 
   addProduct (product: Product): Observable<Product> {
-    console.log(product);
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
@@ -33,8 +32,7 @@ export class ProductService {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     };
-    console.log(product);
-    let url = `${this.productUrl}/update/${product.id}`;
+    const url = `${this.productUrl}/update`;
     return this.http.put(url, product, httpOptions);
   }
 

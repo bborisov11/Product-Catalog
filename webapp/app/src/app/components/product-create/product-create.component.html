@@ -1,14 +1,20 @@
 <h2>Create Product</h2>
 <form>
-  <div class="row">
+  <div class="row" id="create-form">
     <div class="col-md-4">
       <div class="form-group">
         <label class="form-control-label" for="username">Name</label>
         <input class="form-control" id="username" type="text" name="username" [(ngModel)]="product.name">
       </div>
+      <div *ngIf="invalidName" class="alert alert-danger">
+        Name is required
+      </div>
       <div class="form-group">
         <label class="form-control-label" for="description">Description</label>
         <input class="form-control" id="description" type="text" name="description" [(ngModel)]="product.description">
+      </div>
+      <div *ngIf="invalidDescription" class="alert alert-danger">
+        Description is required
       </div>
       <div class="form-group">
         <label class="form-control-label" for="image">Image</label>
@@ -18,9 +24,13 @@
         <label class="form-control-label" for="price">Price</label>
         <input class="form-control" id="price" type="number" name="price" [(ngModel)]="product.price">
       </div>
-      <button class="btn btn-primary" (click)="add();">
+      <div *ngIf="invalidPrice" class="alert alert-danger">
+        Price is required and should be a number
+      </div>
+      <button class="btn btn-primary" type="submit" (click)="add();">
         Create
       </button>
+      <button class="btn btn-danger" routerLink="/">Cancel</button>
     </div>
   </div>
 </form>

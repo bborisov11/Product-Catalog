@@ -29,27 +29,33 @@ public class ProductServiceImpl implements ProductService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public ProductDto getProductWithGivenId(Long id) {
-        Product product = this.productRepository.getProductById(id);
+        Product product = this.productRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("No such product!"));
 
         return new ProductDto(product.getId(), product.getName(), product.getDescription(),
                 product.getImage(), product.getPrice());
     }
 
     public void create(ProductDto dto) {
-            Product product = new Product(dto.getName(), dto.getDescription(),
-                    dto.getImage(), dto.getPrice());
-
-            this.productRepository.save(product);
-    }
-
-    public void updateProduct(ProductDto dto,Long id) {
-
         Product product = new Product(dto.getName(), dto.getDescription(),
                 dto.getImage(), dto.getPrice());
-        product.setId(id);
 
-      this.productRepository.save(product);
+        this.productRepository.save(product);
+    }
+
+    public void updateProduct(ProductDto dto) {
+
+        Product product = this.productRepository.findById(dto.getId())
+                .orElseThrow(() -> new IllegalArgumentException("No such product!"));
+
+        product.setName(dto.getName());
+        product.setDescription(dto.getDescription());
+        product.setImage(dto.getImage());
+        product.setPrice(dto.getPrice());
+
+        this.productRepository.save(product);
     }
 
     public void deleteProduct(Long id) {
