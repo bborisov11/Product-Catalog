@@ -72,13 +72,14 @@ public class ProductServiceImplTest {
     @Test
     public void create() throws Exception {
         ProductDto dto = new ProductDto(null,"name", "descr", "image", 4.0);
-        //this.productService.create(dto);
+        this.productService.create(dto);
         Product product = new Product("name", "descr", "image", 4.0);
         Mockito.verify(this.productRepository).save(product);
     }
 
     @Test
     public void updateProduct() throws Exception {
+        
     }
 
     @Test

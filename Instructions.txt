@@ -1,0 +1,14 @@
+			   Instructions for running Product-Catalog project
+				
+			1. Download file from GitHub and unzip it
+			2. Back-end instructions:
+				- in Intellij idea go to Import project then find the file and 
+				  choose api folder and import it as a Gradle project
+				- start mySQL server
+				- in main/java/app go to Application file and start the project
+			3. Front-end instructions:
+				- open a command prompt console window and go to the path of 
+				  webapp folder and find app in src folder.
+				  for example: cd /d D:\Projects\Product-Catalog\webapp\app\src\app
+				- type ng serve
+				- Angular server starts in localhost:4200
