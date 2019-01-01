@@ -79,11 +79,10 @@ public class ProductServiceImplTest {
 
     @Test
     public void updateProduct() throws Exception {
-
+        ProductDto dto = new ProductDto(5L,"name", "descr", "image", 4.0);
+        Product product = new Product("name2", "descr2", "image2", 5.0);
+        Mockito.when(this.productRepository.findById(dto.getId())).thenReturn(Optional.of(product));
+        this.productService.updateProduct(dto);
+        Mockito.verify(this.productRepository).save(product);
     }
-
-    @Test
-    public void deleteProduct() throws Exception {
-    }
-
 }
